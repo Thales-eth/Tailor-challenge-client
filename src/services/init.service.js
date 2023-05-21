@@ -6,15 +6,11 @@ class InitAxios {
             baseURL: `${process.env.NEXT_PUBLIC_API_URL}/${path}`
         })
 
-        this.api.interceptors.request.use(config => {
-            const authToken = localStorage.getItem("authToken")
-
-            if (authToken) {
-                config.headers = { Authorization: `Bearer ${authToken}` }
-            }
-
-            return config
-        })
+        /*
+        I could include intercerptors' configuration here but the problem is I don't want every single one of my calls
+        to get the token from local storage. In fact, I want to use Next's "getStaticProps" function, I wouldn't have access
+        to local storage since that function is being called from a node.js environment
+        */
     }
 }
 

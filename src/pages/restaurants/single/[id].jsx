@@ -1,3 +1,4 @@
+import IsPrivate from "@/components/IsPrivate/IsPrivate"
 import { useRouter } from "next/router"
 
 const restaurantDetailsPage = () => {
@@ -9,4 +10,10 @@ const restaurantDetailsPage = () => {
     )
 }
 
-export default restaurantDetailsPage
+const authRestaurantDetailsPage = () => {
+    return (
+        <IsPrivate Component={restaurantDetailsPage} />
+    )
+}
+
+export default authRestaurantDetailsPage

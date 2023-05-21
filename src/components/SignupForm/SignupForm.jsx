@@ -1,8 +1,14 @@
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { useState } from "react"
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
+import Link from "next/link"
 
 const SignupForm = ({ handleSubmit, handleInputChange, signupData }) => {
     const { email, username, password, avatar } = signupData
+    const [canSee, setCanSee] = useState(false)
+
+    function changeVision() {
+        setCanSee(!canSee)
+    }
 
     return (
         <form onSubmit={handleSubmit} /*className={styles.loginForm}*/>
@@ -27,16 +33,16 @@ const SignupForm = ({ handleSubmit, handleInputChange, signupData }) => {
                 }
             </div>
 
-            <div className={styles.avatar}>
+            <div /*className={styles.avatar}*/>
                 <input
-                    className={styles.fileInput}
+                    /*className={styles.fileInput}*/
                     name='avatar'
-                    onChange={handleFileUpload}
+                    /*onChange={handleFileUpload}*/
                     id='avatar'
                     type="file"
                     placeholder='avatar'
                 />
-                <label htmlFor='avatar' className={styles.fileInputLabel}>
+                <label htmlFor='avatar' /*className={styles.fileInputLabel}*/>
                     Upload Avatar
                 </label>
             </div>

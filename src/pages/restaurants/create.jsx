@@ -1,3 +1,5 @@
+import IsPrivate from "@/components/IsPrivate/IsPrivate"
+
 const createRestaurantPage = () => {
 
     return (
@@ -5,4 +7,10 @@ const createRestaurantPage = () => {
     )
 }
 
-export default createRestaurantPage
+const authCreateRestaurantPage = () => {
+    return (
+        <IsPrivate Component={createRestaurantPage} />
+    )
+}
+
+export default authCreateRestaurantPage

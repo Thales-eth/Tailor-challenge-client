@@ -1,8 +1,18 @@
-import InitAxios from "./init.service";
+import InitAxios from "./init.service"
 
 class AuthService extends InitAxios {
     constructor() {
         super('auth')
+
+        this.api.interceptors.request.use(config => {
+            const authToken = localStorage.getItem("authToken")
+
+            if (authToken) {
+                config.headers = { Authorization: `Bearer ${authToken}` }
+            }
+
+            return config
+        })
     }
 
     getLoggedUser() {

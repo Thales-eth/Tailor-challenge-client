@@ -16,8 +16,6 @@
     "react-icons": "^4.8.0"
   },
   "devDependencies": {
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.3",
     "module-alias": "^2.2.2"
   }
 }
