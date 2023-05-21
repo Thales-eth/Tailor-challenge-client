@@ -24,7 +24,7 @@ You will need to create a .env.local file if you want to run this project locall
 | /                           |  Home page            | ❌ |
 | /login                      |  Login page           | ❌ |
 | /signup                     |  Signup page          | ❌ |
-| /profile                    |  Profile Page         | ✅ |
+| /profile                    |  Profile Page         | ❌ |
 | /restaurants                |  Restaurants Page     | ✅ |
 | /restaurants/single/:id            |  Restaurant Details Page     | ✅ |
 | /restaurants/create                |  Restaurants Creation Page     | ✅ |
