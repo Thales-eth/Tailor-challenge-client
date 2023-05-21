@@ -1,14 +1,21 @@
 import IsPrivate from "@/components/IsPrivate/IsPrivate"
 import restaurantsService from "@/services/restaurants.service"
+import Image from "next/image"
+import Link from "next/link"
 
 const restaurantsPage = ({ restaurants }) => {
     return (
         <div>
             <p>Los restaurantes:</p>
             {
-                restaurants.map(({ _id, name, }) => {
+                restaurants.map(({ _id, name, image }) => {
                     return (
-                        <p key={restaurant._id}>{restaurant.name}</p>
+                        <Link key={_id} href={`/restaurants/single/${_id}`}>
+                            <div>
+                                <p>{name}</p>
+                                <Image src={image} width={200} height={200} alt="restaurantPicture" />
+                            </div>
+                        </Link>
                     )
                 })
             }
