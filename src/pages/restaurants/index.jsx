@@ -1,32 +1,27 @@
-import IsPrivate from "@/components/IsPrivate/IsPrivate"
-import restaurantsService from "@/services/restaurants.service"
-import Image from "next/image"
-import Link from "next/link"
+import styles from '../../styles/pages/RestaurantsPage.module.css'
+import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
+import { getRestaurants } from "@/lib/api"
 
 const restaurantsPage = ({ restaurants }) => {
     return (
         <div>
-            <p>Los restaurantes:</p>
-            {
-                restaurants.map(({ _id, name, image }) => {
-                    return (
-                        <Link key={_id} href={`/restaurants/single/${_id}`}>
-                            <div>
-                                <p>{name}</p>
-                                <Image src={image} width={200} height={200} alt="restaurantPicture" />
-                            </div>
-                        </Link>
-                    )
-                })
-            }
+            <p className={styles.restaurantsHeader}>Available Restaurants:</p>
+            <div className={styles.restaurantsGrid}>
+                {
+                    restaurants.map(restaurant => {
+                        return (
+                            <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
 
 export async function getStaticProps() {
     try {
-        const restaurants = await restaurantsService.getRestaurants().then(({ data }) => data)
-        console.log("LOS RESTAURANTS =>", restaurants)
+        const restaurants = await getRestaurants()
         return {
             props: { restaurants }
         }

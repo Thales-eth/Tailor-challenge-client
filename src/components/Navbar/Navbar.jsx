@@ -1,27 +1,42 @@
+import styles from './Navbar.module.css'
 import { AuthContext } from "@/contexts/auth.context"
 import { useContext } from "react"
-import Link from "next/link"
 import { useRouter } from "next/router"
+import Link from "next/link"
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
-    const location = useRouter().asPath
-    console.log("EL PATH =>", location)
+    const currentUrl = useRouter().asPath
 
     return (
-        <div>
-            <Link href={"/"}><h1>LET HIM COOK</h1></Link>
-            {
-                user
-                    ?
-                    <Link href={""} onClick={logout}>Logout</Link>
-                    :
-                    <>
-                        <Link href={"/login"} >Login</Link>
-                        <Link href={"/signup"} >Signup</Link>
-                    </>
-            }
-        </div>
+        <nav className={styles.navBar}>
+            <ul className={styles.navList}>
+                <li className={styles.brandLogo}><Link href={"/"}><h1>Let Him Cook</h1></Link></li>
+                <div className={`flexContainer ${styles.mainLinks}`}>
+                    <li><Link className={currentUrl === "/" ? styles.active : ""} href={"/"}>Home</Link></li>
+                    <li><Link className={currentUrl === "/restaurants" ? styles.active : ""} href={"/restaurants"}>Restaurants</Link></li>
+                    <li><Link className={currentUrl === "/restaurants/create" ? styles.active : ""} href={"/restaurants/create"}>Create</Link></li>
+                </div>
+
+                <div className={`flexContainer ${styles.authLinks}`}>
+                    {
+                        user
+                            ?
+                            <>
+                                <Link href={""} onClick={logout} className={`${styles.btn} ${styles.logoutBtn}`}>Logout</Link>
+                                <Link href={"/profile"} className={`${styles.btn} ${styles.profileBtn}`}>My profile</Link>
+                            </>
+                            :
+                            <>
+                                <Link className={`${styles.btn} ${styles.loginBtn}`} href={"/login"}>Login</Link>
+                                <Link className={`${styles.btn} ${styles.signupBtn}`} href={"/signup"}>Signup</Link>
+                            </>
+                    }
+                </div>
+            </ul>
+
+        </nav>
+
     )
 }
 

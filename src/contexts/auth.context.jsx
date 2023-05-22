@@ -39,7 +39,8 @@ const AuthProviderWrapper = (props) => {
         return localStorage.getItem("authToken")
     }
 
-    const logout = async () => {
+    const logout = async (e) => {
+        e.preventDefault()
         await localStorage.removeItem("authToken")
         setUser(null)
         setIsLoading(false)

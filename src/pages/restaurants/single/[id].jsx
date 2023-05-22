@@ -1,17 +1,22 @@
 import restaurantsService from "@/services/restaurants.service"
-import Image from "next/image"
+import Map from "@/components/Map/Map"
+import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
+import OperatingHours from "@/components/OperatingHours/OperatingHours"
+import Reviews from "@/components/Reviews/Reviews"
+import RestaurantDetails from "@/components/RestaurantDetails/RestaurantDetails"
 
 const restaurantDetailsPage = ({ restaurantDetails }) => {
-    const { name, neighborhood, address, location, image, cuisine_type, operating_hours, reviews } = restaurantDetails
-    console.log("WHO R U =>", restaurantDetails)
+    const { location: { coordinates }, operating_hours, reviews } = restaurantDetails
 
     return (
         <div>
-            <p>{name}</p>
-            <p>{neighborhood}</p>
-            <p>{address}</p>
-            <p>{cuisine_type}</p>
-            <Image height={200} width={200} src={image} alt="singleRestaurantPicture" />
+            <RestaurantDetails restaurant={restaurantDetails} />
+            <hr />
+            <RestaurantCard restaurant={restaurantDetails} />
+            <OperatingHours operating_hours={operating_hours} />
+            <Map centerCoordinates={coordinates} hasMultipleRestaurants={false} singleRestaurant={restaurantDetails} />
+            <Reviews reviews={reviews} />
+
         </div>
     )
 }

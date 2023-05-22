@@ -10,7 +10,6 @@ const signupPage = () => {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        console.log("LA DATA DEL SIGNUP =>", signupData)
         await authService.signup(signupData)
         router.push("/login")
     }

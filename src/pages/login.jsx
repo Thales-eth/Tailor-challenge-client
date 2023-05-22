@@ -11,7 +11,6 @@ const loginPage = () => {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        console.log("LOS DATOS =>", loginData)
         try {
             const loginResponse = await authService.login(loginData).then(({ data }) => data)
             const { authToken } = loginResponse

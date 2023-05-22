@@ -1,7 +1,44 @@
-export default function Home() {
+import styles from "../styles/pages/HomePage.module.css"
+import Map from "@/components/Map/Map"
+import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
+import { MAP_CENTER_COORDINATES } from "@/consts"
+import { getRestaurants } from "@/lib/api"
+
+const HomePage = ({ restaurants }) => {
   return (
-    <div>
-      HOME PAGE
+    <div className={styles.homePage}>
+      <h1>Featured Restaurants:</h1>
+      <div className={styles.restaurants}>
+        {
+          restaurants.slice(0, 3).map(restaurant => {
+            return (
+              <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+            )
+          })
+        }
+      </div>
+      <h2>Restaurant locations:</h2>
+      <Map centerCoordinates={MAP_CENTER_COORDINATES}
+        restaurants={restaurants}
+        hasMultipleRestaurants={true}
+      />
     </div>
   )
 }
+
+export async function getStaticProps() {
+  try {
+    const restaurants = await getRestaurants()
+    return {
+      props: { restaurants }
+    }
+  }
+  catch (error) {
+    console.log(error)
+    return {
+      props: { restaurants: [] }
+    }
+  }
+}
+
+export default HomePage

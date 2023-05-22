@@ -1,0 +1,21 @@
+.footer {
+    background-color: #ebe3cd;
+    /* position: absolute;
+    bottom: 0;
+    width: 100vw; */
+}
+
+.footerList {
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo {
+    transition: 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.2);
+}

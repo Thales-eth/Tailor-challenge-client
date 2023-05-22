@@ -1,0 +1,33 @@
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.welcome p {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-right: 100px;
+}
+
+.favoriteRestaurants {
+    margin: 100px 0;
+}
+
+.sectionHeader {
+    text-align: center;
+    font-size: 3em;
+}
+
+.restaurants {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
