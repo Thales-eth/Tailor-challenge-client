@@ -1,0 +1,14 @@
+.restaurantDetails p {
+    margin-top: 10px;
+}
+
+.neighborhood {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.restaurantName {
+    font-weight: bold;
+    font-size: 2em;
+    margin-bottom: 20px;
+}

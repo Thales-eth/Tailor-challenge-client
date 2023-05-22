@@ -1,0 +1,10 @@
+.restaurantInfo {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.restaurantTrivia {
+    margin-right: 150px;
+}
+

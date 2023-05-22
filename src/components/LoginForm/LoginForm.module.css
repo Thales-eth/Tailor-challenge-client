@@ -1,0 +1,25 @@
+.loginForm {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.loginForm input {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5em;
+    text-align: center;
+    border: 2.5px solid black;
+    border-radius: 40px;
+    padding: 10px 100px;
+    margin-top: 60px;
+}
+
+.password {
+    position: relative;
+}
+
+.pwdLogo {
+    cursor: pointer;
+    position: absolute;
+    bottom: 20%;
+    right: 5%;
+}

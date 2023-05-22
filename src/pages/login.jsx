@@ -1,3 +1,4 @@
+import styles from "../styles/pages/LoginPage.module.css"
 import { useState, useContext } from "react"
 import { AuthContext } from "../contexts/auth.context"
 import { useRouter } from "next/router"
@@ -30,8 +31,8 @@ const loginPage = () => {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="authPage">
+            <h1 className="authHeader">Login</h1>
             <LoginForm handleInputChange={handleInputChange} handleSubmit={handleSubmit} loginData={loginData} />
         </div>
     )

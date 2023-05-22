@@ -1,3 +1,4 @@
+import styles from './LoginForm.module.css'
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { useState } from "react"
 import Link from "next/link"
@@ -11,20 +12,20 @@ const LoginForm = ({ handleSubmit, handleInputChange, loginData }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} /*className={styles.loginForm}*/>
+        <form onSubmit={handleSubmit} className="authForm">
             <div>
                 <label htmlFor="email"></label>
                 <input autoComplete='username' name='email' value={email} onChange={handleInputChange} autoFocus id='email' type="email" placeholder='Email' required />
             </div>
 
-            <div /*className={styles.password}*/>
+            <div className="password">
                 <label htmlFor="password"></label>
                 <input autoComplete="current-password" name='password' value={password} onChange={handleInputChange} id='password' type={!canSee ? "password" : "text"} placeholder='Password' required />
                 {
                     canSee ?
-                        <AiFillEye onClick={changeVision} /*className={styles.pwdLogo}*/ color={"black"} size={34} />
+                        <AiFillEye onClick={changeVision} className="pwdLogo" color={"black"} size={34} />
                         :
-                        <AiFillEyeInvisible onClick={changeVision} /*className={styles.pwdLogo}*/ color={"black"} size={34} />
+                        <AiFillEyeInvisible onClick={changeVision} className="pwdLogo" color={"black"} size={34} />
                 }
             </div>
 

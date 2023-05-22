@@ -1,3 +1,4 @@
+import styles from '../../../styles/pages/RestaurantDetails.module.css'
 import restaurantsService from "@/services/restaurants.service"
 import Map from "@/components/Map/Map"
 import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
@@ -10,12 +11,19 @@ const restaurantDetailsPage = ({ restaurantDetails }) => {
 
     return (
         <div>
-            <RestaurantDetails restaurant={restaurantDetails} />
-            <hr />
-            <RestaurantCard restaurant={restaurantDetails} />
-            <OperatingHours operating_hours={operating_hours} />
+            <div className={styles.restaurantInfo}>
+                <div className={styles.restaurantTrivia}>
+                    <RestaurantDetails restaurant={restaurantDetails} />
+                    <OperatingHours operating_hours={operating_hours} />
+                </div>
+                <RestaurantCard restaurant={restaurantDetails} />
+            </div>
+
             <Map centerCoordinates={coordinates} hasMultipleRestaurants={false} singleRestaurant={restaurantDetails} />
-            <Reviews reviews={reviews} />
+            {
+                reviews.length !== 0 &&
+                <Reviews reviews={reviews} />
+            }
 
         </div>
     )

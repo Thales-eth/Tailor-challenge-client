@@ -20,7 +20,7 @@ const signupPage = () => {
     }
 
     return (
-        <div>
+        <div className="authPage">
             <h1>Signup</h1>
             <SignupForm handleSubmit={handleSubmit} handleInputChange={handleInputChange} signupData={signupData} />
         </div>

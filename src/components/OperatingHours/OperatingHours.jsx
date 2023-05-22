@@ -1,9 +1,11 @@
+import styles from './OperatingHours.module.css'
+
 const OperatingHours = ({ operating_hours }) => {
     const { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday } = operating_hours
 
     return (
-        <div>
-            <p>Operating Hours:</p>
+        <div className={styles.operatingHours}>
+            <p className={styles.title}>Operating Hours:</p>
             <p>Monday: {Monday}</p>
             <p>Tuesday: {Tuesday}</p>
             <p>Wednesday: {Wednesday}</p>
