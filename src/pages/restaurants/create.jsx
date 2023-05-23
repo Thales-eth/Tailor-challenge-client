@@ -11,7 +11,11 @@ import Errors from "@/components/Errors/Errors"
 
 const createRestaurantPage = () => {
 
-    const [restaurantData, setRestaurantData] = useState({ name: "", neighborhood: "", address: "", location: { type: "Point", coordinates: [] }, image: "", cuisine_type: "", operating_hours: {}, reviews: [] })
+    const [restaurantData, setRestaurantData] = useState({
+        name: "", neighborhood: "", address: "", location: { type: "Point", coordinates: [] }, image: "", cuisine_type: "", operating_hours: {
+            Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: ""
+        }, reviews: []
+    })
     const [showLoading, setShowLoading] = useState(false)
     const { user } = useContext(AuthContext)
     const { errors, setErrors } = useContext(ErrorContext)

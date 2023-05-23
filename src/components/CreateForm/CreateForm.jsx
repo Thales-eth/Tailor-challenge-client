@@ -1,13 +1,11 @@
 import FileInput from "../FileInput/FileInput"
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { Autocomplete } from "@react-google-maps/api";
-// import { GoogleMapsContext } from "@/contexts/googlemaps.context";
 
 const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestaurantData }) => {
     const { name, neighborhood, address, cuisine_type, operating_hours } = restaurantData
-    const [selectedPlace, setSelectedPlace] = useState(null);
+    const [_selectedPlace, setSelectedPlace] = useState(null);
     const [autoCompleteFunction, setAutoCompleteFunction] = useState(null)
-    // const { isLoaded } = useContext(GoogleMapsContext)
 
     async function handleFileUpload(e) {
         const image = e.target.files[0]
@@ -28,9 +26,12 @@ const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestau
         }
     }
 
-    useEffect(() => {
-        console.log("LA RESTAURANT DATITA ==>", restaurantData)
-    }, [restaurantData])
+    function handleOperatingHoursChange(day, time) {
+        setOperatingHours((prevOperatingHours) => ({
+            ...prevOperatingHours,
+            [day]: time,
+        }));
+    }
 
     return (
         <form className="authForm" onSubmit={handleSubmit}>
@@ -69,12 +70,6 @@ const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestau
             <div>
                 <label htmlFor="cuisine_type"></label>
                 <input name='cuisine_type' value={cuisine_type} autoComplete='username' onChange={handleInputChange} id='cuisine_type' type="text" placeholder='Cuisine type' />
-            </div>
-
-            {/* PENSAR FORMATO */}
-            <div>
-                <label htmlFor="operating_hours"></label>
-                <input name='operating_hours' value={""} autoComplete='username' onChange={handleInputChange} id='operating_hours' type="text" placeholder='Operating Hours' />
             </div>
 
             <button className='submitButton' type='submit'>Submit</button>

@@ -2,26 +2,18 @@ import MapStyles from './MapStyles.json'
 import { memo, useCallback, useContext, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useRouter } from 'next/router';
-// import { GoogleMapsContext } from '@/contexts/googlemaps.context';
 const libraries = ["places"]
 
 const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRestaurant }) => {
 
     const router = useRouter()
     const { _id: restaurantId, name: singleRestaurantName, location: { coordinates: singleRestaurantCoordinates } = {} } = singleRestaurant ?? {}
-    // const { isLoaded } = useContext(GoogleMapsContext)
     const containerStyle = {
         width: '1000px',
         height: '600px',
         borderRadius: "30px",
         margin: "100px auto"
     };
-
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries,
-    })
 
     const center = {
         lat: centerCoordinates[0],
@@ -40,7 +32,7 @@ const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRes
         setMap(null)
     }, [])
 
-    return isLoaded ? (
+    return (
         <GoogleMap
             options={{ styles: MapStyles }}
             mapContainerStyle={containerStyle}
@@ -69,9 +61,8 @@ const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRes
                         position={{ lat: singleRestaurantCoordinates[0], lng: singleRestaurantCoordinates[1] }}
                     />
             }
-            <></>
         </GoogleMap>
-    ) : <></>
+    )
 }
 
 export default memo(Map)
