@@ -24,12 +24,14 @@ const restaurantDetailsPage = ({ restaurantDetails }) => {
                 &&
                 <Map centerCoordinates={coordinates} hasMultipleRestaurants={false} singleRestaurant={restaurantDetails} />
             }
-            <h2 className={styles.reviewsHeader}>Reviews</h2>
             {
                 reviews.length !== 0 ?
                     <Reviews reviews={reviews} />
                     :
-                    <p className={styles.noReviews}>So sorry, this restaurant has no reviews...</p>
+                    <>
+                        <h2 className={styles.reviewsHeader}>Reviews</h2>
+                        <p className={styles.noReviews}>So sorry, this restaurant has no reviews...</p>
+                    </>
             }
 
         </div>

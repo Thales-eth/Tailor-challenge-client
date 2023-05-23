@@ -35,6 +35,7 @@ const signupPage = () => {
             router.push("/profile")
         }
         catch (error) {
+            setShowLoading(false)
             console.log("ASI ME LLEGA EL ERROR =>", error)
             const { err } = error.response.data
             setErrors(err)

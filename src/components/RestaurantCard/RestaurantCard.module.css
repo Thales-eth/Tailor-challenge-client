@@ -21,6 +21,22 @@
     visibility: visible;
 }
 
+.eraseBtn {
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    transition: 0.3s;
+}
+
+.editBtn {
+    cursor: pointer;
+    position: absolute;
+    left: 45px;
+    top: 10px;
+    transition: 0.3s;
+}
+
 .likeBtn {
     cursor: pointer;
     position: absolute;
@@ -29,7 +45,7 @@
     transition: 0.3s;
 }
 
-.likeBtn:hover {
+.likeBtn:hover, .eraseBtn:hover, .editBtn:hover {
     transform: scale(1.3);
 }
 

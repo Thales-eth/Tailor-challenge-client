@@ -21,8 +21,8 @@ class RestaurantService extends InitAxios {
         return this.api.put(`/edit/${id}`, body)
     }
 
-    deleteRestaurant(id) {
-        return this.api.delete(`/delete/${id}`)
+    deleteRestaurant(id, user_id) {
+        return this.api.delete(`/delete/${id}/${user_id}`)
     }
 
     static getInstance() {

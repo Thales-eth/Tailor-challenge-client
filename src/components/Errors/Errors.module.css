@@ -3,6 +3,8 @@
 }
 
 .error {
+    margin-top: 10px;
+    text-align:center;
     border: 2px solid rgb(248, 92, 92);
     border-radius: 10px;
     padding: 20px;

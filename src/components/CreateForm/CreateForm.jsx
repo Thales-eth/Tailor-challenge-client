@@ -1,8 +1,13 @@
 import FileInput from "../FileInput/FileInput"
+import { useContext, useEffect, useState } from "react";
+import { Autocomplete } from "@react-google-maps/api";
+// import { GoogleMapsContext } from "@/contexts/googlemaps.context";
 
 const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestaurantData }) => {
-
-    const { name, neighborhood, address, location, cuisine_type, operating_hours } = restaurantData
+    const { name, neighborhood, address, cuisine_type, operating_hours } = restaurantData
+    const [selectedPlace, setSelectedPlace] = useState(null);
+    const [autoCompleteFunction, setAutoCompleteFunction] = useState(null)
+    // const { isLoaded } = useContext(GoogleMapsContext)
 
     async function handleFileUpload(e) {
         const image = e.target.files[0]
@@ -10,6 +15,22 @@ const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestau
         uploadData.append("imageUrl", image)
         setRestaurantData({ ...restaurantData, image: uploadData })
     }
+
+    function handlePlaceSelect() {
+        if (autoCompleteFunction) {
+            const place = autoCompleteFunction.getPlace()
+            setSelectedPlace(place)
+            const { lat, lng } = place.geometry.location
+            setRestaurantData({
+                ...restaurantData,
+                location: { type: "Point", coordinates: [lat(), lng()] },
+            })
+        }
+    }
+
+    useEffect(() => {
+        console.log("LA RESTAURANT DATITA ==>", restaurantData)
+    }, [restaurantData])
 
     return (
         <form className="authForm" onSubmit={handleSubmit}>
@@ -28,10 +49,19 @@ const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestau
                 <input name='address' value={address} autoComplete='username' onChange={handleInputChange} id='address' type="text" placeholder='Address' />
             </div>
 
-            {/* IMPLEMENTAR MAPS AUTOCOMPLETE */}
             <div>
                 <label htmlFor="location"></label>
-                <input name='location' value={""} autoComplete='username' onChange={handleInputChange} id='location' type="text" placeholder='Location' />
+                <Autocomplete
+                    onLoad={autocomplete => {
+                        autocomplete.setOptions({
+                            types: ["geocode"]
+                        })
+                        setAutoCompleteFunction(autocomplete)
+                    }}
+                    onPlaceChanged={handlePlaceSelect}
+                >
+                    <input name='location' autoComplete='off' id='location' type="text" placeholder='Location' />
+                </Autocomplete>
             </div>
 
             <FileInput handleFileUpload={handleFileUpload} msg={"Upload Image"} />

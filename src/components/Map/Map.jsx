@@ -1,13 +1,15 @@
 import MapStyles from './MapStyles.json'
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useContext, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useRouter } from 'next/router';
+// import { GoogleMapsContext } from '@/contexts/googlemaps.context';
+const libraries = ["places"]
 
 const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRestaurant }) => {
 
     const router = useRouter()
     const { _id: restaurantId, name: singleRestaurantName, location: { coordinates: singleRestaurantCoordinates } = {} } = singleRestaurant ?? {}
-
+    // const { isLoaded } = useContext(GoogleMapsContext)
     const containerStyle = {
         width: '1000px',
         height: '600px',
@@ -15,15 +17,16 @@ const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRes
         margin: "100px auto"
     };
 
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+        libraries,
+    })
+
     const center = {
         lat: centerCoordinates[0],
         lng: centerCoordinates[1]
     };
-
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
-    })
 
     const [_map, setMap] = useState(null)
 
@@ -50,7 +53,6 @@ const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRes
                 hasMultipleRestaurants
                     ?
                     restaurants.map(({ _id, name, location: { coordinates } }) => {
-
                         return (
                             <Marker
                                 key={_id}
