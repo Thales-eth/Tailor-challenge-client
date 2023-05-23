@@ -1,8 +1,5 @@
 .footer {
     background-color: #ebe3cd;
-    /* position: absolute;
-    bottom: 0;
-    width: 100vw; */
 }
 
 .footerList {
@@ -18,4 +15,10 @@
 
 .logo:hover {
     transform: scale(1.2);
+}
+
+@media (max-width: 767px) {
+    .logo {
+        width: 25px;
+    }
 }

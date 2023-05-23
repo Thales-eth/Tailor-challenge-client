@@ -11,14 +11,16 @@ const Navbar = () => {
     return (
         <nav className={styles.navBar}>
             <ul className={styles.navList}>
-                <li className={styles.brandLogo}><Link href={"/"}><h1>Let Him Cook</h1></Link></li>
-                <div className={`flexContainer ${styles.mainLinks}`}>
+                <div className={styles.navBlock}>
+                    <li className={styles.brandLogo}><Link href={"/"}><h1>Let Him Cook</h1></Link></li>
+                </div>
+                <div className={`flexContainer ${styles.mainLinks} ${styles.navBlock}`}>
                     <li><Link className={currentUrl === "/" ? styles.active : ""} href={"/"}>Home</Link></li>
                     <li><Link className={currentUrl === "/restaurants" ? styles.active : ""} href={"/restaurants"}>Restaurants</Link></li>
                     <li><Link className={currentUrl === "/restaurants/create" ? styles.active : ""} href={"/restaurants/create"}>Create</Link></li>
                 </div>
 
-                <div className={`flexContainer ${styles.authLinks}`}>
+                <div className={`flexContainer ${styles.authLinks} ${styles.navBlock}`}>
                     {
                         user
                             ?

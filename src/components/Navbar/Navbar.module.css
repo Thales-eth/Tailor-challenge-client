@@ -69,3 +69,13 @@
     color: black;
     border: 2px solid black;
 }
+
+@media (max-width: 767px) {
+    .navList {
+        flex-direction: column;
+    }
+
+    .navBlock {
+        margin-top: 25px;
+    }
+}

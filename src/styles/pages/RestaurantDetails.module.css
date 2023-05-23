@@ -20,3 +20,26 @@
     font-size: 1.5em;
     margin: 50px 0 100px;
 }
+
+@media (max-width: 767px) {
+    .restaurantInfo {
+        margin-top: 50px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reviewsHeader {
+        font-size: 32px;
+    }
+
+    .noReviews {
+        font-size: 14px;
+    }
+
+    .restaurantTrivia {
+        margin-right: 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
