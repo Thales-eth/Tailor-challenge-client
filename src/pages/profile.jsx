@@ -5,6 +5,7 @@ import Image from "next/image"
 import IsPrivate from "@/components/IsPrivate/IsPrivate"
 import usersService from "@/services/users.service"
 import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
+import Link from 'next/link'
 
 const profilePage = () => {
     const { user } = useContext(AuthContext)
@@ -36,11 +37,15 @@ const profilePage = () => {
                 <p className={styles.sectionHeader}>Your favorite Restaurants:</p>
                 <div className={styles.restaurants}>
                     {
-                        favoriteRestaurants.map(restaurant => {
-                            return (
-                                <RestaurantCard key={restaurant._id} restaurant={restaurant} />
-                            )
-                        })
+                        favoriteRestaurants.length
+                            ?
+                            favoriteRestaurants.map(restaurant => {
+                                return (
+                                    <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+                                )
+                            })
+                            :
+                            <Link className={styles.noFavRestaurants} href={"/restaurants"}>No favorite restaurants: Start browsing</Link>
                     }
                 </div>
             </section>

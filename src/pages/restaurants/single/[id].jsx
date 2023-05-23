@@ -19,10 +19,17 @@ const restaurantDetailsPage = ({ restaurantDetails }) => {
                 <RestaurantCard restaurant={restaurantDetails} />
             </div>
 
-            <Map centerCoordinates={coordinates} hasMultipleRestaurants={false} singleRestaurant={restaurantDetails} />
             {
-                reviews.length !== 0 &&
-                <Reviews reviews={reviews} />
+                coordinates.length !== 0
+                &&
+                <Map centerCoordinates={coordinates} hasMultipleRestaurants={false} singleRestaurant={restaurantDetails} />
+            }
+            <h2 className={styles.reviewsHeader}>Reviews</h2>
+            {
+                reviews.length !== 0 ?
+                    <Reviews reviews={reviews} />
+                    :
+                    <p className={styles.noReviews}>So sorry, this restaurant has no reviews...</p>
             }
 
         </div>

@@ -1,13 +1,22 @@
+import styles from './SignupForm.module.css'
 import { useState } from "react"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import Link from "next/link"
+import FileInput from '../FileInput/FileInput'
 
-const SignupForm = ({ handleSubmit, handleInputChange, signupData }) => {
-    const { email, username, password, avatar } = signupData
+const SignupForm = ({ handleSubmit, handleInputChange, signupData, setSignupData }) => {
+    const { email, username, password } = signupData
     const [canSee, setCanSee] = useState(false)
 
     function changeVision() {
         setCanSee(!canSee)
+    }
+
+    function handleFileUpload(e) {
+        const image = e.target.files[0]
+        const uploadData = new FormData()
+        uploadData.append("imageUrl", image)
+        setSignupData({ ...signupData, avatar: uploadData })
     }
 
     return (
@@ -33,23 +42,11 @@ const SignupForm = ({ handleSubmit, handleInputChange, signupData }) => {
                 }
             </div>
 
-            <div /*className={styles.avatar}*/>
-                <input
-                    /*className={styles.fileInput}*/
-                    name='avatar'
-                    /*onChange={handleFileUpload}*/
-                    id='avatar'
-                    type="file"
-                    placeholder='avatar'
-                />
-                <label htmlFor='avatar' /*className={styles.fileInputLabel}*/>
-                    Upload Avatar
-                </label>
-            </div>
+            <FileInput handleFileUpload={handleFileUpload} msg={"Upload Avatar"} />
 
-            <Link href={"/login"}><p  /*className={styles.signupLink}*/>Already have an account?</p></Link>
+            <Link href={"/login"}><p className="signupLink">Already have an account?</p></Link>
 
-            <button type='submit'>Submit</button>
+            <button className="submitButton" type='submit'>Submit</button>
         </form>
     )
 }

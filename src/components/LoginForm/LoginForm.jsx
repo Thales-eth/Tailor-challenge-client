@@ -29,9 +29,9 @@ const LoginForm = ({ handleSubmit, handleInputChange, loginData }) => {
                 }
             </div>
 
-            <Link href={"/signup"}><p  /*className={styles.signupLink}*/>Haven't created your account yet?</p></Link>
+            <Link href={"/signup"}><p className="signupLink">Haven't created your account yet?</p></Link>
 
-            <button type='submit'>Submit</button>
+            <button className='submitButton' type='submit'>Submit</button>
         </form>
     )
 }

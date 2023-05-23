@@ -31,3 +31,13 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.noFavRestaurants {
+    font-size: 1.5em;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.noFavRestaurants:hover {
+    transform: scale(1.1);
+}

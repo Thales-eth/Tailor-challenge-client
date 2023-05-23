@@ -13,8 +13,8 @@ class RestaurantService extends InitAxios {
         return this.api.get(`/getOne/${id}`)
     }
 
-    createOneRestaurant(body) {
-        return this.api.post("/create", body)
+    createOneRestaurant(body, id) {
+        return this.api.post(`/create/${id}`, body)
 
     }
     editSingleRestaurant(id, body) {
