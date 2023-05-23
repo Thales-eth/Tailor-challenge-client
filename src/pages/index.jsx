@@ -18,6 +18,7 @@ const HomePage = ({ restaurants }) => {
         }
       </div>
       <h2>Restaurant locations:</h2>
+      <p className={styles.markersInfo}>Click each marker to see more details!</p>
       <Map centerCoordinates={MAP_CENTER_COORDINATES}
         restaurants={restaurants}
         hasMultipleRestaurants={true}

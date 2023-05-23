@@ -41,3 +41,20 @@
 .noFavRestaurants:hover {
     transform: scale(1.1);
 }
+
+@media (max-width: 767px) {
+    .sectionHeader {
+        font-size: 20px;
+    }
+
+    .welcome {
+        flex-direction: column;
+    }
+
+    .welcome p {
+        font-size: 2em;
+        font-weight: bold;
+        margin-right: 0;
+        margin-bottom: 50px;
+    }
+}

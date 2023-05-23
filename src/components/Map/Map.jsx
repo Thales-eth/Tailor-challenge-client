@@ -1,19 +1,19 @@
 import MapStyles from './MapStyles.json'
-import { memo, useCallback, useContext, useState } from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { memo, useCallback, useState } from 'react';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 import { useRouter } from 'next/router';
-const libraries = ["places"]
 
 const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRestaurant }) => {
 
     const router = useRouter()
     const { _id: restaurantId, name: singleRestaurantName, location: { coordinates: singleRestaurantCoordinates } = {} } = singleRestaurant ?? {}
+
     const containerStyle = {
-        width: '1000px',
-        height: '600px',
-        borderRadius: "30px",
-        margin: "100px auto"
-    };
+        width: '80%',
+        height: '500px',
+        borderRadius: '30px',
+        margin: '100px auto'
+    }
 
     const center = {
         lat: centerCoordinates[0],

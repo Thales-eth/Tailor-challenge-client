@@ -6,6 +6,8 @@ import IsPrivate from "@/components/IsPrivate/IsPrivate"
 import usersService from "@/services/users.service"
 import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
 import Link from 'next/link'
+import Map from '@/components/Map/Map'
+import { MAP_CENTER_COORDINATES } from '@/consts'
 
 const profilePage = () => {
     const { user } = useContext(AuthContext)
@@ -48,6 +50,11 @@ const profilePage = () => {
                             <Link className={styles.noFavRestaurants} href={"/restaurants"}>No favorite restaurants: Start browsing</Link>
                     }
                 </div>
+                {
+                    favoriteRestaurants.length !== 0
+                    &&
+                    <Map restaurants={favoriteRestaurants} centerCoordinates={MAP_CENTER_COORDINATES} hasMultipleRestaurants={true} />
+                }
             </section>
         </div>
     )

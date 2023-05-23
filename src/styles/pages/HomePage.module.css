@@ -12,3 +12,21 @@
     font-weight: bold;
     margin-top: 100px;
 }
+
+.markersInfo {
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+
+    .homePage h1,
+    .homePage h2 {
+        font-size: 1.7em;
+    }
+
+    .markersInfo {
+        font-size: 0.8em;
+    }
+}

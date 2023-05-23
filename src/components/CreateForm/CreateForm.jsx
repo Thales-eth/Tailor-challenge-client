@@ -2,7 +2,7 @@ import FileInput from "../FileInput/FileInput"
 import { useState } from "react";
 import { Autocomplete } from "@react-google-maps/api";
 
-const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestaurantData }) => {
+const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestaurantData, location = "" }) => {
     const { name, neighborhood, address, cuisine_type, operating_hours } = restaurantData
     const [_selectedPlace, setSelectedPlace] = useState(null);
     const [autoCompleteFunction, setAutoCompleteFunction] = useState(null)
@@ -24,13 +24,6 @@ const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestau
                 location: { type: "Point", coordinates: [lat(), lng()] },
             })
         }
-    }
-
-    function handleOperatingHoursChange(day, time) {
-        setOperatingHours((prevOperatingHours) => ({
-            ...prevOperatingHours,
-            [day]: time,
-        }));
     }
 
     return (
@@ -61,7 +54,7 @@ const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestau
                     }}
                     onPlaceChanged={handlePlaceSelect}
                 >
-                    <input name='location' autoComplete='off' id='location' type="text" placeholder='Location' />
+                    <input defaultValue={location} name='location' autoComplete='off' id='location' type="text" placeholder='Location' />
                 </Autocomplete>
             </div>
 
