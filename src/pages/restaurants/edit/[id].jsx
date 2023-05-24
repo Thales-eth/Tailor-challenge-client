@@ -61,7 +61,7 @@ const restaurantEditPage = () => {
         try {
             const cloudinaryLink = await getCloudinaryLink(restaurantData.image)
             await restaurantsService.editSingleRestaurant(id, { ...restaurantData, image: cloudinaryLink })
-            router.push(`/restaurants/single/${id}`)
+            router.push(`/restaurants`)
         }
         catch (error) {
             setShowLoading(false)

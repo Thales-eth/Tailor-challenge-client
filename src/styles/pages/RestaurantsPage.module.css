@@ -12,3 +12,9 @@
     font-size: 3em;
     text-align: center;
 }
+
+@media (max-width: 767px) {
+    .restaurantsHeader {
+        font-size: 2em;
+    }
+}

@@ -8,14 +8,14 @@ import { getCloudinaryLink } from "@/utils/getCloudinaryLink"
 import { useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
 import { ErrorContext } from "@/contexts/error.context"
+import authService from "@/services/auth.service"
 
 const createRestaurantPage = () => {
-
     const [restaurantData, setRestaurantData] = useState({
         name: "", neighborhood: "", address: "", location: { type: "Point", coordinates: [] }, image: "", cuisine_type: "", reviews: []
     })
     const [showLoading, setShowLoading] = useState(false)
-    const { user } = useContext(AuthContext)
+    const { user, authenticateUser } = useContext(AuthContext)
     const { errors, setErrors } = useContext(ErrorContext)
     const router = useRouter()
 
@@ -37,6 +37,7 @@ const createRestaurantPage = () => {
         try {
             const cloudinaryLink = await getCloudinaryLink(restaurantData.image)
             await restaurantsService.createOneRestaurant({ ...restaurantData, image: cloudinaryLink }, user._id)
+            await authenticateUser()
             router.push("/restaurants")
         }
         catch (error) {
