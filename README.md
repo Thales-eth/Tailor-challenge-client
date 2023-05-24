@@ -1,6 +1,7 @@
 # LET HIM COOK: built using MENN STACK (Mongo, Express, Next.JS, Node)
 
-*DESCRIPTION*
+Let Him Cook is a MENN app that displays some of the coolest restaurants around the world and allows
+experienced users to create more restaurants and display them on the web. 
 
 # Deployed Application
 
@@ -13,9 +14,10 @@ npm install
 
 # Environment Variables
 
-You will need to create a .env.local file if you want to run this project locally. In order to do so you will also need variable:
+You will need to create a .env (or .env.local) file if you want to run this project locally. In order to do so you will also need variable:
 
 - NEXT_PRIVATE_GOOGLE_MAPS_API_KEY
+- NEXT_PUBLIC_API_URL
 
 # Application Routes:
 

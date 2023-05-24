@@ -81,7 +81,7 @@ a {
 @media (max-width: 767px) {
   .authHeader {
     margin-top: 90px;
-    font-size: 3em;
+    font-size: 40px;
   }
 
   .authForm input {
