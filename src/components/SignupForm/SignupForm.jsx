@@ -28,7 +28,7 @@ const SignupForm = ({ handleSubmit, handleInputChange, signupData, setSignupData
 
             <div>
                 <label htmlFor="username"></label>
-                <input autoComplete='username' name='username' value={username} onChange={handleInputChange} autoFocus id='username' type="username" placeholder='username' required />
+                <input autoComplete='username' name='username' value={username} onChange={handleInputChange} autoFocus id='username' type="username" placeholder='Username' required />
             </div>
 
             <div className="password">

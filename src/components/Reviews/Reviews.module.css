@@ -15,7 +15,7 @@
 
 .reviewCard {
     width: 50%;
-    background-color: #ebe3cd;
+    background-color: white;
     border: 2px solid black;
     border-radius: 30px;
     padding: 50px;
@@ -35,4 +35,21 @@
 
 .anonymousAvatar {
     border-radius: 50%;
+}
+
+.displayMore {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .reviews p {
+        font-size: 14px;
+    }
+
+    .displayMore {
+        cursor: pointer;
+        display: block;
+        color: rgb(43, 43, 140);
+        text-decoration: underline;
+    }
 }

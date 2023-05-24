@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100vh;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -66,4 +71,38 @@ a {
   border-radius: 40px;
   font-size: 2em;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.submitButton:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 767px) {
+  .authHeader {
+    margin-top: 90px;
+    font-size: 3em;
+  }
+
+  .authForm input {
+    max-width: 120px;
+    font-size: 16px;
+    margin-top: 30px;
+  }
+
+  .pwdLogo {
+    right: 10%;
+    bottom: 15%;
+    width: 30px;
+  }
+
+  .signupLink {
+    font-size: 1.2em;
+  }
+
+  .submitButton {
+    font-size: 1.2em;
+    padding: 20px 30px;
+    margin-bottom: 100px;
+  }
 }
