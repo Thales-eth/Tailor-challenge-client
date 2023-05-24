@@ -1,7 +1,7 @@
+import Loader from "../Loader/Loader"
 import { AuthContext } from "@/contexts/auth.context"
 import { useRouter } from "next/router"
 import { useContext } from "react"
-import Loader from "../Loader/Loader"
 
 const IsPrivate = ({ Component }) => {
     const { user, isLoading } = useContext(AuthContext)

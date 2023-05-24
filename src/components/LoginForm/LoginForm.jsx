@@ -1,7 +1,6 @@
-import styles from './LoginForm.module.css'
+import Link from "next/link"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { useState } from "react"
-import Link from "next/link"
 
 const LoginForm = ({ handleSubmit, handleInputChange, loginData }) => {
     const [canSee, setCanSee] = useState(false)

@@ -5,7 +5,6 @@ import { useRouter } from "next/router"
 const AuthContext = createContext()
 
 const AuthProviderWrapper = (props) => {
-
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
 

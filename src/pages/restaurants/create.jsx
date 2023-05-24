@@ -2,19 +2,17 @@ import CreateForm from "@/components/CreateForm/CreateForm"
 import IsPrivate from "@/components/IsPrivate/IsPrivate"
 import Loader from "@/components/Loader/Loader"
 import restaurantsService from "@/services/restaurants.service"
+import Errors from "@/components/Errors/Errors"
 import { AuthContext } from "@/contexts/auth.context"
 import { getCloudinaryLink } from "@/utils/getCloudinaryLink"
 import { useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
 import { ErrorContext } from "@/contexts/error.context"
-import Errors from "@/components/Errors/Errors"
 
 const createRestaurantPage = () => {
 
     const [restaurantData, setRestaurantData] = useState({
-        name: "", neighborhood: "", address: "", location: { type: "Point", coordinates: [] }, image: "", cuisine_type: "", operating_hours: {
-            Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: ""
-        }, reviews: []
+        name: "", neighborhood: "", address: "", location: { type: "Point", coordinates: [] }, image: "", cuisine_type: "", reviews: []
     })
     const [showLoading, setShowLoading] = useState(false)
     const { user } = useContext(AuthContext)
@@ -22,8 +20,10 @@ const createRestaurantPage = () => {
     const router = useRouter()
 
     useEffect(() => {
-        console.log("LOS ERRORINOS", errors)
-    }, [errors])
+        return () => {
+            setErrors([])
+        }
+    }, [])
 
     function handleInputChange(e) {
         const { name, value } = e.target

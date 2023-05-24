@@ -1,6 +1,7 @@
 import usersService from "@/services/users.service"
 import { createContext, useContext, useState } from "react"
 import { AuthContext } from "./auth.context"
+
 const RestaurantContext = createContext()
 
 const RestaurantWrapper = ({ children }) => {
@@ -15,7 +16,6 @@ const RestaurantWrapper = ({ children }) => {
         e.preventDefault()
         try {
             const updatedUser = await usersService.dislikeRestaurant(id).then(({ data }) => data)
-            console.log("WHO R U =>", updatedUser)
             setUser(updatedUser)
             setDislikedRestaurants(previousSet => new Set([...previousSet, id]))
         }
@@ -28,7 +28,6 @@ const RestaurantWrapper = ({ children }) => {
         e.preventDefault()
         try {
             const updatedUser = await usersService.likeRestaurant(id).then(({ data }) => data)
-            console.log("WHO R U =>", updatedUser)
             setUser(updatedUser)
             setDislikedRestaurants(previousSet => {
                 const newSet = new Set(previousSet)

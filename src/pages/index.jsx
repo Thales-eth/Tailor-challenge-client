@@ -5,12 +5,14 @@ import { MAP_CENTER_COORDINATES } from "@/consts"
 import { getRestaurants } from "@/lib/api"
 
 const HomePage = ({ restaurants }) => {
+  const featuredRestaurants = restaurants.slice(0, 3)
+
   return (
     <div className={styles.homePage}>
       <h1>Featured Restaurants:</h1>
       <div className={styles.restaurants}>
         {
-          restaurants.slice(0, 3).map(restaurant => {
+          featuredRestaurants.map(restaurant => {
             return (
               <RestaurantCard key={restaurant._id} restaurant={restaurant} />
             )

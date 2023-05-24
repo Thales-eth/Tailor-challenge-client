@@ -1,16 +1,14 @@
 import authService from "@/services/auth.service"
 import SignupForm from "@/components/SignupForm/SignupForm"
-import uploadService from "@/services/upload.service"
 import Loader from "@/components/Loader/Loader"
+import Errors from "@/components/Errors/Errors"
 import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { AuthContext } from "@/contexts/auth.context"
 import { ErrorContext } from "@/contexts/error.context"
-import Errors from "@/components/Errors/Errors"
 import { getCloudinaryLink } from "@/utils/getCloudinaryLink"
 
 const signupPage = () => {
-
     const [signupData, setSignupData] = useState({ username: "", password: "", email: "", avatar: "" })
     const [showLoading, setShowLoading] = useState(false)
     const { storeToken, authenticateUser, } = useContext(AuthContext)
@@ -36,7 +34,6 @@ const signupPage = () => {
         }
         catch (error) {
             setShowLoading(false)
-            console.log("ASI ME LLEGA EL ERROR =>", error)
             const { err } = error.response.data
             setErrors(err)
         }

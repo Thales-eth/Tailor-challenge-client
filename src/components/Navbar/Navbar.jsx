@@ -1,8 +1,8 @@
 import styles from './Navbar.module.css'
+import Link from "next/link"
 import { AuthContext } from "@/contexts/auth.context"
 import { useContext } from "react"
 import { useRouter } from "next/router"
-import Link from "next/link"
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)

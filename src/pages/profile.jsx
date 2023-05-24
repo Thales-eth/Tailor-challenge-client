@@ -1,18 +1,17 @@
 import styles from '../styles/pages/ProfilePage.module.css'
-import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "@/contexts/auth.context"
 import Image from "next/image"
 import IsPrivate from "@/components/IsPrivate/IsPrivate"
 import usersService from "@/services/users.service"
 import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
 import Link from 'next/link'
 import Map from '@/components/Map/Map'
+import { useContext, useEffect, useState } from "react"
+import { AuthContext } from "@/contexts/auth.context"
 import { MAP_CENTER_COORDINATES } from '@/consts'
 
 const profilePage = () => {
     const { user } = useContext(AuthContext)
     const [favoriteRestaurants, setFavoriteRestaurants] = useState([])
-
 
     useEffect(() => {
         loadFavoriteRestaurants()

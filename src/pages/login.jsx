@@ -1,11 +1,10 @@
-import styles from "../styles/pages/LoginPage.module.css"
+import LoginForm from "../components/LoginForm/LoginForm"
+import Errors from "@/components/Errors/Errors"
+import authService from "../services/auth.service"
+import { ErrorContext } from "@/contexts/error.context"
 import { useState, useContext, useEffect } from "react"
 import { AuthContext } from "../contexts/auth.context"
 import { useRouter } from "next/router"
-import LoginForm from "../components/LoginForm/LoginForm"
-import authService from "../services/auth.service"
-import Errors from "@/components/Errors/Errors"
-import { ErrorContext } from "@/contexts/error.context"
 
 const loginPage = () => {
     const [loginData, setLoginData] = useState({ email: "", password: "" })
@@ -22,15 +21,13 @@ const loginPage = () => {
     async function handleSubmit(e) {
         e.preventDefault()
         try {
-            const loginResponse = await authService.login(loginData).then(({ data }) => data)
-            const { authToken } = loginResponse
+            const authToken = await authService.login(loginData).then(({ data }) => data.authToken)
             await storeToken(authToken)
             await authenticateUser()
             router.push("/profile")
         }
         catch (error) {
             const { err } = error.response.data
-            console.log("ASI ME LLEGA EL ERROR =>", err)
             setErrors(err)
         }
     }

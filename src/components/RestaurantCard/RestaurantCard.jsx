@@ -1,11 +1,11 @@
 import styles from './RestaurantCard.module.css'
 import Link from 'next/link'
+import restaurantsService from '@/services/restaurants.service'
 import { AiFillHeart, AiOutlineHeart, AiFillDelete, AiFillEdit } from "react-icons/ai"
 import { RiDislikeFill } from "react-icons/ri"
 import { RestaurantContext } from "@/contexts/restaurant.context"
 import { useContext, useState } from "react"
 import { AuthContext } from '@/contexts/auth.context'
-import restaurantsService from '@/services/restaurants.service'
 import { useRouter } from 'next/router'
 
 const RestaurantCard = ({ restaurant }) => {

@@ -1,16 +1,16 @@
 import CreateForm from "@/components/CreateForm/CreateForm"
 import IsPrivate from "@/components/IsPrivate/IsPrivate"
-import Errors from "@/components/Errors/Errors";
+import Errors from "@/components/Errors/Errors"
 import Loader from "@/components/Loader/Loader"
 import restaurantsService from "@/services/restaurants.service"
-import Geocode from "react-geocode";
+import Geocode from "react-geocode"
 import { ErrorContext } from "@/contexts/error.context"
 import { getCloudinaryLink } from "@/utils/getCloudinaryLink"
 import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 
 const restaurantEditPage = () => {
-    Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+    Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY)
     const [restaurantData, setRestaurantData] = useState({ name: "", neighborhood: "", address: "", location: { type: "Point", coordinates: [] }, image: "", cuisine_type: "", operating_hours: {}, reviews: [] })
     const [showLoading, setShowLoading] = useState(false)
     const [location, setLocation] = useState("")
@@ -20,6 +20,10 @@ const restaurantEditPage = () => {
 
     useEffect(() => {
         loadRestaurant()
+
+        return () => {
+            setErrors([])
+        }
     }, [])
 
     useEffect(() => {
@@ -34,9 +38,9 @@ const restaurantEditPage = () => {
                     setLocation(address)
                 },
                 (error) => {
-                    console.error(error);
+                    console.error(error)
                 }
-            );
+            )
         }
     }
 
@@ -60,7 +64,6 @@ const restaurantEditPage = () => {
             router.push(`/restaurants/single/${id}`)
         }
         catch (error) {
-            console.log("LOS ERRORES =>", error)
             setShowLoading(false)
             const { err } = error.response.data
             setErrors(err)

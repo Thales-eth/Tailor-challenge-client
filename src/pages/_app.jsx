@@ -2,10 +2,10 @@ import '@/styles/reset.css'
 import '@/styles/globals.css'
 import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
+import GoogleMapsLoader from '@/components/GoogleMapsLoader/GoogleMapsLoader'
 import { AuthProviderWrapper } from '@/contexts/auth.context'
 import { RestaurantWrapper } from '@/contexts/restaurant.context'
 import { ErrorWrapper } from '@/contexts/error.context'
-import GoogleMapsLoader from '@/components/GoogleMapsLoader/GoogleMapsLoader'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps }) {
         </ErrorWrapper>
       </RestaurantWrapper>
     </AuthProviderWrapper>
-
   )
 }
 

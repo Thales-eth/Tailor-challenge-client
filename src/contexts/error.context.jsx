@@ -1,9 +1,8 @@
-import { createContext, useRef, useState } from "react"
+import { createContext, useState } from "react"
 
 const ErrorContext = createContext()
 
 const ErrorWrapper = (props) => {
-
     const [errors, setErrors] = useState([])
 
     return (

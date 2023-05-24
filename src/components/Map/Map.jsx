@@ -1,7 +1,7 @@
 import MapStyles from './MapStyles.json'
-import { memo, useCallback, useState } from 'react';
-import { GoogleMap, Marker } from '@react-google-maps/api';
-import { useRouter } from 'next/router';
+import { memo, useCallback, useState } from 'react'
+import { GoogleMap, Marker } from '@react-google-maps/api'
+import { useRouter } from 'next/router'
 
 const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRestaurant }) => {
 
@@ -18,13 +18,13 @@ const Map = ({ restaurants, centerCoordinates, hasMultipleRestaurants, singleRes
     const center = {
         lat: centerCoordinates[0],
         lng: centerCoordinates[1]
-    };
+    }
 
     const [_map, setMap] = useState(null)
 
     const onLoad = useCallback(function callback(map) {
         map.setZoom(10)
-        map.setCenter(center);
+        map.setCenter(center)
         setMap(map)
     }, [])
 

@@ -1,8 +1,7 @@
-import styles from './SignupForm.module.css'
-import { useState } from "react"
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import Link from "next/link"
 import FileInput from '../FileInput/FileInput'
+import { useState } from "react"
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 
 const SignupForm = ({ handleSubmit, handleInputChange, signupData, setSignupData }) => {
     const { email, username, password } = signupData

@@ -1,10 +1,10 @@
 import FileInput from "../FileInput/FileInput"
-import { useState } from "react";
-import { Autocomplete } from "@react-google-maps/api";
+import { useState } from "react"
+import { Autocomplete } from "@react-google-maps/api"
 
 const CreateForm = ({ handleInputChange, handleSubmit, restaurantData, setRestaurantData, location = "" }) => {
     const { name, neighborhood, address, cuisine_type, operating_hours } = restaurantData
-    const [_selectedPlace, setSelectedPlace] = useState(null);
+    const [_selectedPlace, setSelectedPlace] = useState(null)
     const [autoCompleteFunction, setAutoCompleteFunction] = useState(null)
 
     async function handleFileUpload(e) {
