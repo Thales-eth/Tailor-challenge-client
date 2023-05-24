@@ -38,21 +38,7 @@ const restaurantDetailsPage = ({ restaurantDetails }) => {
     )
 }
 
-export async function getStaticPaths() {
-    const restaurants = await restaurantsService.getRestaurants().then(({ data }) => data)
-    const restaurantsIds = restaurants.map(({ _id }) => _id)
-    const paths = restaurantsIds.map(id => {
-        return ({
-            params: { id }
-        })
-    })
-    return {
-        paths,
-        fallback: false
-    }
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const { params: { id } } = context
 
     try {

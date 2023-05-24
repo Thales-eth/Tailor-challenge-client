@@ -29,7 +29,7 @@ const HomePage = ({ restaurants }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const restaurants = await getRestaurants()
     return {
