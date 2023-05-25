@@ -3,8 +3,20 @@ import Map from "@/components/Map/Map"
 import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
 import { MAP_CENTER_COORDINATES } from "@/consts"
 import { getRestaurants } from "@/lib/api"
+import { useEffect, useState } from "react"
 
-const HomePage = ({ restaurants }) => {
+const HomePage = () => {
+  const [restaurants, setRestaurants] = useState([])
+
+  useEffect(() => {
+    loadRestaurants()
+  }, [])
+
+  async function loadRestaurants() {
+    const restaurantsList = await getRestaurants()
+    setRestaurants(restaurantsList)
+  }
+
   const featuredRestaurants = restaurants.slice(0, 3)
 
   return (
@@ -29,19 +41,19 @@ const HomePage = ({ restaurants }) => {
   )
 }
 
-export async function getServerSideProps() {
-  try {
-    const restaurants = await getRestaurants()
-    return {
-      props: { restaurants }
-    }
-  }
-  catch (error) {
-    console.log(error)
-    return {
-      props: { restaurants: [] }
-    }
-  }
-}
+// export async function getServerSideProps() {
+//   try {
+//     const restaurants = await getRestaurants()
+//     return {
+//       props: { restaurants }
+//     }
+//   }
+//   catch (error) {
+//     console.log(error)
+//     return {
+//       props: { restaurants: [] }
+//     }
+//   }
+// }
 
 export default HomePage

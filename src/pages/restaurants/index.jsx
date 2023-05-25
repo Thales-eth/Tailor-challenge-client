@@ -1,8 +1,21 @@
 import styles from '../../styles/pages/RestaurantsPage.module.css'
 import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
 import { getRestaurants } from "@/lib/api"
+import { useEffect, useState } from 'react'
 
-const restaurantsPage = ({ restaurants }) => {
+const restaurantsPage = () => {
+
+    const [restaurants, setRestaurants] = useState([])
+
+    useEffect(() => {
+        loadRestaurants()
+    }, [])
+
+    async function loadRestaurants() {
+        const restaurantsList = await getRestaurants()
+        setRestaurants(restaurantsList)
+    }
+
     return (
         <div>
             <p className={styles.restaurantsHeader}>Available Restaurants:</p>
@@ -19,19 +32,19 @@ const restaurantsPage = ({ restaurants }) => {
     )
 }
 
-export async function getServerSideProps() {
-    try {
-        const restaurants = await getRestaurants()
-        return {
-            props: { restaurants }
-        }
-    }
-    catch (error) {
-        console.log(error)
-        return {
-            props: { restaurants: [] }
-        }
-    }
-}
+// export async function getServerSideProps() {
+//     try {
+//         const restaurants = await getRestaurants()
+//         return {
+//             props: { restaurants }
+//         }
+//     }
+//     catch (error) {
+//         console.log(error)
+//         return {
+//             props: { restaurants: [] }
+//         }
+//     }
+// }
 
 export default restaurantsPage

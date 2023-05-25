@@ -5,9 +5,25 @@ import RestaurantCard from "@/components/RestaurantCard/RestaurantCard"
 import OperatingHours from "@/components/OperatingHours/OperatingHours"
 import Reviews from "@/components/Reviews/Reviews"
 import RestaurantDetails from "@/components/RestaurantDetails/RestaurantDetails"
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
-const restaurantDetailsPage = ({ restaurantDetails }) => {
+const restaurantDetailsPage = () => {
+
+    const [restaurantDetails, setRestaurantDetails] = useState({ location: { coordinates: [] }, operating_hours: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" }, reviews: [] })
     const { location: { coordinates }, operating_hours, reviews } = restaurantDetails
+
+    const router = useRouter()
+    const { id } = router.query
+
+    useEffect(() => {
+        loadSingleRestaurant()
+    }, [])
+
+    async function loadSingleRestaurant() {
+        const singleRestaurant = await restaurantsService.getSingleRestaurant(id).then(({ data }) => data)
+        setRestaurantDetails(singleRestaurant)
+    }
 
     return (
         <div>
@@ -38,21 +54,21 @@ const restaurantDetailsPage = ({ restaurantDetails }) => {
     )
 }
 
-export async function getServerSideProps(context) {
-    const { params: { id } } = context
+// export async function getServerSideProps(context) {
+//     const { params: { id } } = context
 
-    try {
-        const restaurantDetails = await restaurantsService.getSingleRestaurant(id).then(({ data }) => data)
-        return {
-            props: { restaurantDetails }
-        }
-    }
-    catch (error) {
-        console.log(error)
-        return {
-            props: { restaurantDetails: {} }
-        }
-    }
-}
+//     try {
+//         const restaurantDetails = await restaurantsService.getSingleRestaurant(id).then(({ data }) => data)
+//         return {
+//             props: { restaurantDetails }
+//         }
+//     }
+//     catch (error) {
+//         console.log(error)
+//         return {
+//             props: { restaurantDetails: {} }
+//         }
+//     }
+// }
 
 export default restaurantDetailsPage
