@@ -11,7 +11,7 @@ const Footer = () => {
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_blank" rel="noopener noreferrer">
+                    <a href="https://tailorchallenge.fly.dev/api/restaurants/list" target="_blank" rel="noopener noreferrer">
                         <BsCodeSlash className={styles.logo} size={40} />
                     </a>
                 </li>
