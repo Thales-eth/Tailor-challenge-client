@@ -22,7 +22,7 @@ const restaurantsPage = () => {
                 {
                     restaurants.map(restaurant => {
                         return (
-                            <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+                            <RestaurantCard key={restaurant._id} restaurant={restaurant} setRestaurants={setRestaurants} />
                         )
                     })
                 }

@@ -7,12 +7,14 @@ import { RestaurantContext } from "@/contexts/restaurant.context"
 import { useContext, useState } from "react"
 import { AuthContext } from '@/contexts/auth.context'
 import { useRouter } from 'next/router'
+import { getRestaurants } from '@/lib/api'
 
-const RestaurantCard = ({ restaurant }) => {
+const RestaurantCard = ({ restaurant, setRestaurants }) => {
     const { dislikedRestaurants, handleLike, handleDislike } = useContext(RestaurantContext)
     const { user } = useContext(AuthContext)
     const [showAuthorizationMsg, setshowAuthorizationMsg] = useState(false)
     const router = useRouter()
+    const location = router.asPath
 
     function handleUnauthorizedLike(e) {
         e.preventDefault()
@@ -21,8 +23,13 @@ const RestaurantCard = ({ restaurant }) => {
 
     async function handleRestaurantDelete(e, id) {
         e.preventDefault()
+        console.log("LA LOCATION =>", location)
         await restaurantsService.deleteRestaurant(id, user._id)
-        router.push("/restaurants")
+        if (location.startsWith("/restaurants/single") || location.startsWith("/profile")) router.push("/restaurants")
+        else {
+            const updatedRestaurants = await getRestaurants()
+            setRestaurants(updatedRestaurants)
+        }
     }
 
     function handleEditNavigation(e) {
