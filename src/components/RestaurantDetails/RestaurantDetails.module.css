@@ -1,9 +1,9 @@
 .restaurantDetails {
     width: 80%;
 }
+
 .restaurantDetails p {
     margin-top: 10px;
-    text-align: center;
 }
 
 .neighborhood {
@@ -15,4 +15,10 @@
     font-weight: bold;
     font-size: 1.7em;
     margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    .restaurantDetails p {
+        margin-top: 10px;
+    }
 }
