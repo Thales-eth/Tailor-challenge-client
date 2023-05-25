@@ -53,8 +53,8 @@ a {
 .pwdLogo {
   cursor: pointer;
   position: absolute;
-  bottom: 20%;
-  right: 5%;
+  bottom: 18%;
+  right: 10%;
 }
 
 .signupLink {
@@ -81,7 +81,7 @@ a {
 @media (max-width: 767px) {
   .authHeader {
     margin-top: 90px;
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .authForm input {
@@ -92,8 +92,8 @@ a {
 
   .pwdLogo {
     right: 10%;
-    bottom: 15%;
-    width: 30px;
+    bottom: 10%;
+    width: 20px;
   }
 
   .signupLink {
