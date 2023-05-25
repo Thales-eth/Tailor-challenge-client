@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 const restaurantDetailsPage = () => {
-
     const [restaurantDetails, setRestaurantDetails] = useState({ location: { coordinates: [] }, operating_hours: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" }, reviews: [] })
     const { location: { coordinates }, operating_hours, reviews } = restaurantDetails
 
@@ -53,6 +52,9 @@ const restaurantDetailsPage = () => {
         </div>
     )
 }
+
+// The previous version of this code used "getServerSideProps" to get single Restaurant Information
+// However, when deploying the app, this became a huge source of problems, so I switched to using useEffect.
 
 // export async function getServerSideProps(context) {
 //     const { params: { id } } = context

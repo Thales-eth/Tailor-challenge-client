@@ -41,6 +41,9 @@ const HomePage = () => {
   )
 }
 
+// The previous version of this code used "getServerSideProps" to access Restaurants' Information
+// However, when deploying the app, this became a huge source of problems, so I switched to using useEffect.
+
 // export async function getServerSideProps() {
 //   try {
 //     const restaurants = await getRestaurants()

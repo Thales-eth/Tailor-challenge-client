@@ -5,7 +5,7 @@ experienced users to create more restaurants and display them on the web.
 
 # Deployed Application
 
-The deployed application can be found at the following link: "####".
+The deployed application can be found at the following link: "https://tailor-challenge-client-rho.vercel.app".
 
 To install all the dependencies used in the project, simply run the command:
 ```
@@ -18,6 +18,10 @@ You will need to create a .env (or .env.local) file if you want to run this proj
 
 - NEXT_PRIVATE_GOOGLE_MAPS_API_KEY
 - NEXT_PUBLIC_API_URL
+
+# Comments:
+
+Comments have been left in the code describing some of the obstacles I have faced.
 
 # Application Routes:
 
